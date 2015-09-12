@@ -7,6 +7,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
 public class MainActivity extends Activity {
@@ -38,6 +39,10 @@ public class MainActivity extends Activity {
             buttonThreeClicked(v);
         } else if (v.getId() == R.id.imageView4) {
             buttonFourClicked(v);
+        }
+
+        if (numClicks == 2) {
+            displayEndMessage();
         }
 
         // This is used for testing which images are displayed
@@ -147,7 +152,23 @@ public class MainActivity extends Activity {
     }
 
 
-
+    /*
+        Return true if there is a match
+     */
+    public boolean checkForMatch(){
+        if (clickHistory[0] == 0 | clickHistory[1] == 0){
+            return false;
+        } else {
+            return clickHistory[0] == clickHistory[1];
+        }
+    }
+    public void displayEndMessage(){
+        if (checkForMatch()){
+            Toast.makeText(this, "Good Job!", Toast.LENGTH_LONG).show();
+        } else {
+            Toast.makeText(this, "Try again", Toast.LENGTH_LONG).show();
+        }
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
