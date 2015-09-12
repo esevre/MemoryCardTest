@@ -1,12 +1,10 @@
 package com.eriksevre.esevre.memorycardtest;
 
 import android.app.Activity;
-import android.media.Image;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 
 
@@ -29,6 +27,20 @@ public class MainActivity extends Activity {
         Click 2: Flip second card
         Click 3: Reset cards (later you might want to use a timer for this)
      */
+
+    public void globalClick(View v){
+        if (v.getId() == iv1.getId()){
+            buttonOneClicked(v);
+        } else if (v.getId() == R.id.imageView2) {
+            buttonTwoClicked(v);
+        } else if(v.getId() == R.id.imageView3) {
+            buttonThreeClicked(v);
+        } else if (v.getId() == R.id.imageView4) {
+            buttonFourClicked(v);
+        }
+
+    }
+
     public void buttonOneClicked(View v){
 
         String currentTag = (String) iv1.getTag();
@@ -38,7 +50,7 @@ public class MainActivity extends Activity {
             iv1.setImageResource(myResource);
             iv1.setTag("front");
             numClicks++;
-        } else if (numClicks == 1 & currentTag == "back") {
+        } else if (numClicks == 1 & currentTag.equals("back")) {
             iv1.setImageResource(myResource);
             iv1.setTag("front");
             numClicks++;
@@ -47,6 +59,7 @@ public class MainActivity extends Activity {
             numClicks = 0;
         } else {
             // this should never happen
+            resetCards();
         }
     }
 
@@ -59,7 +72,7 @@ public class MainActivity extends Activity {
             iv2.setImageResource(myResource);
             iv2.setTag("front");
             numClicks++;
-        } else if (numClicks == 1 & currentTag == "back") {
+        } else if (numClicks == 1 & currentTag.equals("back")) {
             iv2.setImageResource(myResource);
             iv2.setTag("front");
             numClicks++;
@@ -68,6 +81,7 @@ public class MainActivity extends Activity {
             numClicks = 0;
         } else {
             // this should never happen
+            resetCards();
         }
     }
 
@@ -81,7 +95,7 @@ public class MainActivity extends Activity {
             iv3.setImageResource(myResource);
             iv3.setTag("front");
             numClicks++;
-        } else if (numClicks == 1 & currentTag == "back") {
+        } else if (numClicks == 1 & currentTag.equals("back")) {
             iv3.setImageResource(myResource);
             iv3.setTag("front");
             numClicks++;
@@ -90,6 +104,7 @@ public class MainActivity extends Activity {
             numClicks = 0;
         } else {
             // this should never happen
+            resetCards();
         }
     }
 
@@ -102,7 +117,7 @@ public class MainActivity extends Activity {
             iv4.setImageResource(myResource);
             iv4.setTag("front");
             numClicks++;
-        } else if (numClicks == 1 & currentTag == "back") {
+        } else if (numClicks == 1 & currentTag.equals("back")) {
             iv4.setImageResource(myResource);
             iv4.setTag("front");
             numClicks++;
@@ -111,6 +126,7 @@ public class MainActivity extends Activity {
             numClicks = 0;
         } else {
             // this should never happen
+            resetCards();
         }
     }
 
