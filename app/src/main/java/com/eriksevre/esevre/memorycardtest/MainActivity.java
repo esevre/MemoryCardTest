@@ -6,6 +6,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 
 public class MainActivity extends Activity {
@@ -39,6 +40,13 @@ public class MainActivity extends Activity {
             buttonFourClicked(v);
         }
 
+        // This is used for testing which images are displayed
+        //
+        //  I'm keeping this here as a record of my debug process
+        TextView tv = (TextView) findViewById(R.id.textView);
+        String displayMe = "(" + clickHistory[0] + ", " + clickHistory[1] + ")";
+        tv.setText(displayMe);
+
     }
 
     public void buttonOneClicked(View v){
@@ -49,10 +57,12 @@ public class MainActivity extends Activity {
         if (numClicks == 0) {
             iv1.setImageResource(myResource);
             iv1.setTag("front");
+            clickHistory[0] = myResource;
             numClicks++;
         } else if (numClicks == 1 & currentTag.equals("back")) {
             iv1.setImageResource(myResource);
             iv1.setTag("front");
+            clickHistory[1] = myResource;
             numClicks++;
         } else if (numClicks == 2) {
             resetCards();
@@ -71,10 +81,12 @@ public class MainActivity extends Activity {
         if (numClicks == 0) {
             iv2.setImageResource(myResource);
             iv2.setTag("front");
+            clickHistory[0] = myResource;
             numClicks++;
         } else if (numClicks == 1 & currentTag.equals("back")) {
             iv2.setImageResource(myResource);
             iv2.setTag("front");
+            clickHistory[1] = myResource;
             numClicks++;
         } else if (numClicks == 2) {
             resetCards();
@@ -94,10 +106,12 @@ public class MainActivity extends Activity {
         if (numClicks == 0) {
             iv3.setImageResource(myResource);
             iv3.setTag("front");
+            clickHistory[0] = myResource;
             numClicks++;
         } else if (numClicks == 1 & currentTag.equals("back")) {
             iv3.setImageResource(myResource);
             iv3.setTag("front");
+            clickHistory[1] = myResource;
             numClicks++;
         } else if (numClicks == 2) {
             resetCards();
@@ -116,10 +130,12 @@ public class MainActivity extends Activity {
         if (numClicks == 0) {
             iv4.setImageResource(myResource);
             iv4.setTag("front");
+            clickHistory[0] = myResource;
             numClicks++;
         } else if (numClicks == 1 & currentTag.equals("back")) {
             iv4.setImageResource(myResource);
             iv4.setTag("front");
+            clickHistory[1] = myResource;
             numClicks++;
         } else if (numClicks == 2) {
             resetCards();
@@ -137,18 +153,6 @@ public class MainActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        //
-        //  we have to initialize our global variables
-        //
-
-        // set numclicks to 0, at start of game there are no clicks
-        numClicks = 0;
-
-        // set the choices to
-        clickHistory = new int[2];
-        for (int i = 0; i < 2; i++){
-            clickHistory[i] = 0;
-        }
 
         //
         // Set the initial images to be the card back
@@ -162,6 +166,15 @@ public class MainActivity extends Activity {
     }
 
     public void resetCards(){
+        // set numclicks to 0, at start of game there are no clicks
+        numClicks = 0;
+
+        // set the choices to
+        clickHistory = new int[2];
+        for (int i = 0; i < 2; i++){
+            clickHistory[i] = 0;
+        }
+
         iv1.setImageResource(R.drawable.cardback);
         iv2.setImageResource(R.drawable.cardback);
         iv3.setImageResource(R.drawable.cardback);
